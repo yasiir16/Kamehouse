@@ -1,1 +1,43 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kame House PT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Kame House PT</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#upload">Upload</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Welcome to Kame House PT, your go-to place for sharing content and showcasing photography. Explore our gallery and feel free to upload your own content.</p>
+        </section>
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div id="photo-gallery"></div>
+        </section>
+        <section id="upload">
+            <h2>Upload Your Content</h2>
+            <form id="upload-form">
+                <input type="file" id="file-input" multiple>
+                <button type="button" onclick="uploadFiles()">Upload</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Kame House PT. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
