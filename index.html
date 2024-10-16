@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kame House PT</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -21,7 +22,7 @@
     <main>
         <section id="about">
             <h2>About Us</h2>
-            <p>Welcome to Kame House PT, your go-to place for sharing content and showcasing photography.</p>
+            <p>Welcome to Kame House PT, your go-to place for sharing content and showcasing photography. Explore our gallery and feel free to upload your own content.</p>
         </section>
         <section id="gallery">
             <h2>Gallery</h2>
@@ -31,6 +32,8 @@
             <h2>Upload Your Content</h2>
             <form id="upload-form">
                 <input type="file" id="file-input" multiple accept="image/*,video/*">
+                <input type="text" id="title-input" placeholder="Title">
+                <textarea id="description-input" placeholder="Description"></textarea>
                 <button type="button" onclick="uploadFiles()">Upload</button>
             </form>
         </section>
