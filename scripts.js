@@ -1,68 +1,36 @@
-function uploadFiles() {
-  const fileInput = document.getElementById('file-input');
-  const titleInput = document.getElementById('title-input');
-  const descriptionInput = document.getElementById('description-input');
-  const gallery = document.getElementById('photo-gallery');
+const galleryContainer = document.querySelector('.gallery-container');
 
-  for (const file of fileInput.files) {
-    if (file.size > 1024 * 1024 * 5) {
-      alert("File size exceeded! Please upload a file less than 5MB.");
-      return;
-    }
+// Sample image data (replace with your actual image URLs and data)
+const images = [
+    { src: 'image1.jpg', title: 'Image 1', description: 'Description for image 1' },
+    { src: 'image2.jpg', title: 'Image 2', description: 'Description for image 2' },
+    // ... more images
+];
 
-    const reader = new FileReader();
+// Function to create gallery items
+function createGalleryItem(image) {
+    const galleryItem = document.createElement('div');
+    galleryItem.classList.add('gallery-item');
 
-    reader.onload = function(event) {
-      const container = createMediaContainer(file.type);
-      container.appendChild(createElementWithText('h3', titleInput.value));
-      container.appendChild(createElementWithText('p', descriptionInput.value));
-      if (file.type.startsWith('image/')) {
-        container.appendChild(createImageElement(event.target.result));
-      } else if (file.type.startsWith('video/')) {
-        container.appendChild(createVideoElement(event.target.result));
-      }
-      gallery.appendChild(container);
-    };
+    const img = document.createElement('img');
+    img.src = image.src;
+    img.alt = image.title;
 
-    reader.onerror = function(error) {
-      console.error("Error reading file:", error);
-      alert("An error occurred while reading the file. Please try again.");
-    };
+    const title = document.createElement('h3');
+    title.textContent = image.title;
 
-    reader.readAsDataURL(file);
-  }
+    const description = document.createElement('p');
+    description.textContent = image.description;
 
-  // Clear the input fields after upload
-  titleInput.value = '';
-  descriptionInput.value = '';
+    galleryItem.appendChild(img);
+    galleryItem.appendChild(title);
+    galleryItem.appendChild(description);
+
+    return galleryItem;
 }
 
-function createMediaContainer(fileType) {
-  const container = document.createElement('div');
-  container.classList.add('media-container');
-  if (fileType.startsWith('image/')) {
-    container.classList.add('image-container');
-  } else if (fileType.startsWith('video/')) {
-    container.classList.add('video-container');
-  }
-  return container;
-}
-
-function createElementWithText(tag, text) {
-  const element = document.createElement(tag);
-  element.textContent = text;
-  return element;
-}
-
-function createImageElement(src) {
-  const img = document.createElement('img');
-  img.src = src;
-  return img;
-}
-
-function createVideoElement(src) {
-  const video = document.createElement('video');
-  video.src = src;
-  video.controls = true;
-  return video;
-}
+// Add images to the gallery
+images.forEach(image => {
+    const galleryItem = createGalleryItem(image);
+    galleryContainer.appendChild(galleryItem);
+});
